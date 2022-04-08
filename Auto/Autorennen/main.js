@@ -1,8 +1,10 @@
 'use strict';
 
-const score = document.querySelector('.score'),
+const score = document.querySelector('.score'), // Zähler
       start = document.querySelector('.start'),
-      gameArea = document.querySelector('.gameArea');
+      gameArea = document.querySelector('.gameArea'), // Spielfeld
+      car = document.createElement('div'); 
+      car.classList.add('car');
 
 start.addEventListener('click', startGame);
 document.addEventListener('keydown', startRun);
@@ -15,9 +17,25 @@ const keys = {
     ArrowLeft: false
 }
 
-function startGame () {
-    start.classList.add('hide');
+const setting = {
+    start: false,
+    score: 0, 
+    spead: 3
 }
+
+function startGame() {
+    start.classList.add('hide');
+    gameArea.append(car);
+    requestAnimationFrame(playGame);
+}
+
+function playGame() {
+    console.log('Play!!!');
+    if(setting.start) {
+        requestAnimationFrame(playGame);
+    }
+}
+
 
 function startRun(event) {
     event.preventDefault();
