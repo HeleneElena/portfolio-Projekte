@@ -20,18 +20,36 @@ const keys = {
 const setting = {
     start: false,
     score: 0, 
-    spead: 3
+    speed: 3
 }
 
 function startGame() {
     start.classList.add('hide');
+    setting.start = true;
     gameArea.append(car);
+    setting.x = car.offsetLeft;
+    setting.y = car.offsetHeight;
     requestAnimationFrame(playGame);
 }
 
 function playGame() {
     console.log('Play!!!');
     if(setting.start) {
+        if (keys.ArrowLeft) {
+            setting.x -= setting.speed;
+        }
+        if (keys.ArrowRight) {
+            setting.x += setting.speed;
+        }
+        if (keys.ArrowDown) {
+            setting.y += setting.speed;
+        }
+        if (keys.ArrowUp) {
+            setting.y -= setting.speed;
+        }
+
+        car.style.left = setting.x + 'px';
+        car.style.top = setting.y + 'px';
         requestAnimationFrame(playGame);
     }
 }
