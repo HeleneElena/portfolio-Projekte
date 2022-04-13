@@ -20,7 +20,7 @@ const keys = {
 const setting = {
     start: false,
     score: 0, 
-    speed: 3,
+    speed: 4,
     traffic: 3
 }
 
@@ -30,6 +30,8 @@ function getQuantityElements(heightElement) {
 
 function startGame() {
     start.classList.add('hide');
+    gameArea.innerHTML = '';
+    
     for (let i = 0; i < getQuantityElements(100); i++) {
         const line = document.createElement('div');
         line.classList.add('line');
@@ -48,9 +50,12 @@ function startGame() {
         gameArea.append(enemy);
     }
 
-
+    setting.score = 0;
     setting.start = true;
     gameArea.append(car);
+    car.style.left = '125px';
+    car.style.top = 'auto';
+    car.style.bottom = '10px';
     setting.x = car.offsetLeft;
     setting.y = car.offsetTop;
     requestAnimationFrame(playGame);
@@ -58,6 +63,8 @@ function startGame() {
 
 function playGame() {
     if(setting.start) {
+        setting.score += setting.speed;
+        score.textContent = 'SCORE: ' + setting.score;
         moveRoad();
         moveEnemy();
         if (keys.ArrowLeft && setting.x > 0) {
@@ -112,7 +119,8 @@ function moveEnemy() {
             carRect.left <= enemyRect.right &&
             carRect.bottom >= enemyRect.top) {
                 setting.start = false;
-            console.warn('Unfall!!!');
+                start.classList.remove('hide');
+                score.style.top = start.offsetHeight;
         }
 
         item.y += setting.speed / 2;
