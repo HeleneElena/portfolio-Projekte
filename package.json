@@ -1,0 +1,24 @@
+{
+  "name": "portfolio-projekte",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://github.com/HeleneElena/Mein-Portfolio/",
+  "scripts": {
+    "deploy": "gh-pages -d demo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeleneElena/portfolio-Projekte.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeleneElena/portfolio-Projekte/issues"
+  },
+  "homepage": "https://github.com/HeleneElena/portfolio-Projekte#readme",
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  }
+}
